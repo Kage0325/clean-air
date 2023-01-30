@@ -12,7 +12,7 @@ export const AppFooter = () => {
                 >
                     <Box
                         component='img'
-                        src='../../../../public/images/clean-air.webp'
+                        src={`${process.env.PUBLIC_URL}/images/clean-air.webp`}
                         width={{
                             xs: '100px',
                             sm: '150px'

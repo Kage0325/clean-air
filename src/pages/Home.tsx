@@ -70,7 +70,7 @@ export const Home = () => {
                         </LinearGradient>
                         <Box
                             component='img'
-                            src='/images/leaves.png'
+                            src={`${process.env.PUBLIC_URL}/images/leaves.png`}
                             height={{
                                 xs: '50px',
                                 sm: '80px',
@@ -107,7 +107,7 @@ export const Home = () => {
                     <Dialog onClose={() => setOpen(false)} open={open}>
                         <Box
                             component='video'
-                            src='public/images/product_introduction.mp4'
+                            src={`${process.env.PUBLIC_URL}/images/product_introduction.mp4`}
                             height='300px'
                             width='auto'
                             autoPlay
@@ -135,7 +135,7 @@ export const Home = () => {
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
-                                image='/images/22.png'
+                                image={`${process.env.PUBLIC_URL}/images/22.png`}
                                 title='4 давхар нано шүүлтүүр'
                             />
                             <CardContent>
@@ -315,7 +315,7 @@ export const Home = () => {
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
-                                image='/images/11.png'
+                                image={`${process.env.PUBLIC_URL}/images/11.png`}
                                 title='PVC шүүлтүүр'
                             />
                             <CardContent>
@@ -495,7 +495,7 @@ export const Home = () => {
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
-                                image='/images/33.png'
+                                image={`${process.env.PUBLIC_URL}/images/33.png`}
                                 title='Энгийн нано шүүлтүүр'
                             />
                             <CardContent>
@@ -691,7 +691,7 @@ export const Home = () => {
                                 <Stack alignItems='center'>
                                     <Box
                                         component='img'
-                                        src='/images/33.png'
+                                        src={`${process.env.PUBLIC_URL}/images/33.png`}
                                         height='64px'
                                         width='64px'
                                         sx={{
@@ -748,7 +748,7 @@ export const Home = () => {
                     >
                         <Box
                             component='img'
-                            src='/images/woman_air_01.png'
+                            src={`${process.env.PUBLIC_URL}/images/woman_air_01.png`}
                             width='100%'
                             height='100%'
                             sx={{
@@ -1020,6 +1020,6 @@ export const Home = () => {
                     </Grid>
                 </Grid>
             </Container>
-        </Box >
+        </Box>
     );
-};;;;
+};

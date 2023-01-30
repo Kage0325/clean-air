@@ -8,7 +8,7 @@ export const AppHeader = () => {
         >
             <Box
                 component='img'
-                src='/images/clean-air.webp'
+                src={`${process.env.PUBLIC_URL}/images/clean-air.webp`}
                 width='120px'
                 height='auto'
             />
