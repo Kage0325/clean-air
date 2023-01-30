@@ -63,7 +63,7 @@ export const AppFooter = () => {
                                 </Typography>
                             </Link>
                             <Link
-                                href='mailto:sales@clean-ari.mn'
+                                href='mailto:sales@clean-air.mn'
                                 sx={{
                                     color: '#000',
                                     textDecoration: 'none'
@@ -78,7 +78,7 @@ export const AppFooter = () => {
                                         }
                                     }}
                                 >
-                                    sales@clean-ari.mn
+                                    sales@clean-air.mn
                                 </Typography>
                             </Link>
                             <Link
