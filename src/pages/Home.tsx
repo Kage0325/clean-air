@@ -1,5 +1,7 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Dialog, Grid, IconButton, List, ListItem, ListItemIcon, ListItemText, Stack, TextField, Typography } from '@mui/material';
-import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { Box, Breadcrumbs, Button, Card, CardContent, CardMedia, Container, Dialog, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { useSnackbar } from 'notistack';
+import { useRef, useState } from 'react';
 import { AlertTriangle, Check, ChevronLeft, ChevronRight, X } from 'react-feather';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
@@ -9,11 +11,16 @@ import './../styles/custom-css.css';
 
 export const Home = () => {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [subject, setSubject] = useState('');
-    const [message, setMessage] = useState('');
+    const form = useRef<HTMLFormElement>(null);
+    const { enqueueSnackbar } = useSnackbar();
+
     const [open, setOpen] = useState(false);
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [type, setType] = useState('');
+    const [address, setAddress] = useState('');
+    const [message, setMessage] = useState('');
 
     const properties = {
         prevArrow:
@@ -34,7 +41,26 @@ export const Home = () => {
                     />
                 </IconButton>
             </Button>
+    };
 
+    const reserve = (e: any) => {
+        try {
+            e.preventDefault();
+            const currentForm = form.current;
+            if (currentForm === null) {
+                return;
+            }
+
+            emailjs.sendForm('service_svxs06j', 'template_quomcqb', currentForm, '1etwCJ1ekZtcuIevP');
+            setName('');
+            setPhone('');
+            setType('');
+            setAddress('');
+            setMessage('');
+            enqueueSnackbar("Захиалга илгээгдлээ. Бид таньтай эргээд холбогдох болно", { variant: "success" });
+        } catch (error) {
+            enqueueSnackbar("Алдаа гарлаа. Та захиалгаа шалгаад дахин оролдоно уу.", { variant: "error" });
+        }
     };
 
     return (
@@ -130,13 +156,13 @@ export const Home = () => {
                             variant='h6'
                             textAlign='center'
                         >
-                            4 давхар нано шүүлтүүр
+                            Солонгос НАНО /4 давхар/
                         </Typography>
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
                                 image={`${process.env.PUBLIC_URL}/images/22.png`}
-                                title='4 давхар нано шүүлтүүр'
+                                title='Солонгос НАНО /4 давхар/'
                             />
                             <CardContent>
                                 <List disablePadding>
@@ -287,16 +313,55 @@ export const Home = () => {
                                         </ListItemText>
                                     </ListItem>
                                 </List>
-                                <Typography
-                                    textAlign='center'
-                                    sx={{
-                                        fontSize: '20px',
-                                        marginTop: 2,
-                                        fontWeight: 500
-                                    }}
+                                <Stack
+                                    alignItems='center'
+                                    marginTop={2}
                                 >
-                                    ₮90’000
-                                </Typography>
+                                    <Breadcrumbs>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Жижиг
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮90’000
+                                            </Typography>
+                                        </Stack>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Дунд
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮120’000
+                                            </Typography>
+                                        </Stack>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Том
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮150’000
+                                            </Typography>
+                                        </Stack>
+                                    </Breadcrumbs>
+                                </Stack>
                             </CardContent>
                         </Card>
                     </Grid>
@@ -467,16 +532,55 @@ export const Home = () => {
                                         </ListItemText>
                                     </ListItem>
                                 </List>
-                                <Typography
-                                    textAlign='center'
-                                    sx={{
-                                        fontSize: '20px',
-                                        marginTop: 2,
-                                        fontWeight: 500
-                                    }}
+                                <Stack
+                                    alignItems='center'
+                                    marginTop={2}
                                 >
-                                    ₮40’000
-                                </Typography>
+                                    <Breadcrumbs>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Жижиг
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮40’000
+                                            </Typography>
+                                        </Stack>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Дунд
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮55’000
+                                            </Typography>
+                                        </Stack>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Том
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮70’000
+                                            </Typography>
+                                        </Stack>
+                                    </Breadcrumbs>
+                                </Stack>
                             </CardContent>
                         </Card>
                     </Grid>
@@ -490,13 +594,13 @@ export const Home = () => {
                             variant='h6'
                             textAlign='center'
                         >
-                            Энгийн нано шүүлтүүр
+                            Энгийн НАНО шүүлтүүр
                         </Typography>
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
                                 image={`${process.env.PUBLIC_URL}/images/33.png`}
-                                title='Энгийн нано шүүлтүүр'
+                                title='Энгийн НАНО шүүлтүүр'
                             />
                             <CardContent>
                                 <List disablePadding>
@@ -647,16 +751,55 @@ export const Home = () => {
                                         </ListItemText>
                                     </ListItem>
                                 </List>
-                                <Typography
-                                    textAlign='center'
-                                    sx={{
-                                        fontSize: '20px',
-                                        marginTop: 2,
-                                        fontWeight: 500
-                                    }}
+                                <Stack
+                                    alignItems='center'
+                                    marginTop={2}
                                 >
-                                    ₮55’000
-                                </Typography>
+                                    <Breadcrumbs>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Жижиг
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮55’000
+                                            </Typography>
+                                        </Stack>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Дунд
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮80’000
+                                            </Typography>
+                                        </Stack>
+                                        <Stack textAlign='center'>
+                                            <Typography variant='body2'>
+                                                Том
+                                            </Typography>
+                                            <Typography
+                                                color='text.primary'
+                                                sx={{
+                                                    fontSize: '18px',
+                                                    fontWeight: 500
+                                                }}
+                                            >
+                                                ₮100’000
+                                            </Typography>
+                                        </Stack>
+                                    </Breadcrumbs>
+                                </Stack>
                             </CardContent>
                         </Card>
                     </Grid>
@@ -673,10 +816,29 @@ export const Home = () => {
                             md: 500
                         }}
                     >
-                        Захиалга өгөхийг хүсвэл 77006822, 94016822 дугаарлуу холбогдоорой.
+                        Захиалга өгөхийг хүсвэл <Typography
+                            component={Link}
+                            href='tel:77006822'
+                            color='text.primary'
+                            sx={{
+                                textDecoration: 'none'
+                            }}
+                        >
+                            77006822
+                        </Typography>
+                        , <Typography
+                            component={Link}
+                            href='tel:94016822'
+                            color='text.primary'
+                            sx={{
+                                textDecoration: 'none'
+                            }}
+                        >
+                            94016822
+                        </Typography> дугаар руу холбогдоорой.
                     </Typography>
                 </Stack>
-            </Container>
+            </Container >
             <Box
                 sx={{
                     marginTop: 12.5,
@@ -691,11 +853,12 @@ export const Home = () => {
                                 <Stack alignItems='center'>
                                     <Box
                                         component='img'
-                                        src={`${process.env.PUBLIC_URL}/images/33.png`}
+                                        src={`${process.env.PUBLIC_URL}/images/user2.jpg`}
                                         height='64px'
                                         width='64px'
                                         sx={{
-                                            borderRadius: '50%'
+                                            borderRadius: '50%',
+                                            objectFit: 'cover'
                                         }}
                                     />
                                 </Stack>
@@ -705,7 +868,7 @@ export const Home = () => {
                                     color='text.light'
                                     marginTop={4}
                                 >
-                                    Slide 1
+                                    Доржханд
                                 </Typography>
                                 <Stack alignItems='center'>
                                     <Typography
@@ -719,7 +882,85 @@ export const Home = () => {
                                             md: 500
                                         }}
                                     >
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                                        Анх Монголд ийм үйлчилгээ оруулж ирсэнээс нь хойш хэрэглэж байгаа одоо бүтээгдэхүүнүүд нь улам л олон төрөл болоод байгаа. Гэртээ болон оффисдоо хэрэглэдэг. Баярлалаа.
+                                    </Typography>
+                                </Stack>
+                            </div>
+                        </div>
+                        <div className="each-slide-effect">
+                            <div>
+                                <Stack alignItems='center'>
+                                    <Box
+                                        component='img'
+                                        src={`${process.env.PUBLIC_URL}/images/user1.jpg`}
+                                        height='64px'
+                                        width='64px'
+                                        sx={{
+                                            borderRadius: '50%',
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                </Stack>
+                                <Typography
+                                    variant='subtitle1'
+                                    textAlign='center'
+                                    color='text.light'
+                                    marginTop={4}
+                                >
+                                    Бат-Очир
+                                </Typography>
+                                <Stack alignItems='center'>
+                                    <Typography
+                                        variant='body2'
+                                        textAlign='center'
+                                        color='text.light'
+                                        marginTop={1}
+                                        maxWidth={{
+                                            xs: 300,
+                                            sm: 400,
+                                            md: 500
+                                        }}
+                                    >
+                                        Нялх хүүхэдтэй болохоор тогтмол хэрэглэдэг үнэхээр таалагдсан. Бас хүүхдийнхээ ангид хийлгэсэн. Эцэг эхчүүд дуртай байгаа. Дараа жил ахиад хийлгэнээ.
+                                    </Typography>
+                                </Stack>
+                            </div>
+                        </div>
+                        <div className="each-slide-effect">
+                            <div>
+                                <Stack alignItems='center'>
+                                    <Box
+                                        component='img'
+                                        src={`${process.env.PUBLIC_URL}/images/user3.jpg`}
+                                        height='64px'
+                                        width='64px'
+                                        sx={{
+                                            borderRadius: '50%',
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                </Stack>
+                                <Typography
+                                    variant='subtitle1'
+                                    textAlign='center'
+                                    color='text.light'
+                                    marginTop={4}
+                                >
+                                    Сэлэнгэ
+                                </Typography>
+                                <Stack alignItems='center'>
+                                    <Typography
+                                        variant='body2'
+                                        textAlign='center'
+                                        color='text.light'
+                                        marginTop={1}
+                                        maxWidth={{
+                                            xs: 300,
+                                            sm: 400,
+                                            md: 500
+                                        }}
+                                    >
+                                        Нэгэнт л утаатай тоос шороотой бохирдол ихтэй хотод байдаг нь үнэн болохоор эрүүл мэндээ л бодох юм. Баярлалаа.
                                     </Typography>
                                 </Stack>
                             </div>
@@ -791,7 +1032,7 @@ export const Home = () => {
                                     <AlertTriangle color='#2AA2CE' />
                                 </ListItemIcon>
                                 <ListItemText>
-                                    Шүүлтүүрийг авч угааж цэвэрлэхдээ зориулалтын бариулаас барьж салгах, гадна талаас нь зөөлөн даралттай бүлээн усаар шүршиж угаана.
+                                    Шүүлтүүрийг авч угааж цэвэрлэхдээ зориулалтын бариулаас барьж салгах, гадна талаас нь зөөлөн даралттай бүлээн усаар шүршиж угаана
                                 </ListItemText>
                             </ListItem>
                             <ListItem sx={{ paddingY: 0.5 }}>
@@ -799,7 +1040,7 @@ export const Home = () => {
                                     <AlertTriangle color='#2AA2CE' />
                                 </ListItemIcon>
                                 <ListItemText>
-                                    Хэт өндөр даралттай усаар угаах нь цонхны шуултуурийг гэмтээх эрсдэлтэй.
+                                    Хэт өндөр даралттай усаар угаах нь цонхны шуултуурийг гэмтээх эрсдэлтэй
                                 </ListItemText>
                             </ListItem>
                             <ListItem sx={{ paddingY: 0.5 }}>
@@ -807,7 +1048,7 @@ export const Home = () => {
                                     <AlertTriangle color='#2AA2CE' />
                                 </ListItemIcon>
                                 <ListItemText>
-                                    Хэт халуун усаар угааж цэвэрлэж болохгүй.
+                                    Хэт халуун усаар угааж цэвэрлэж болохгүй
                                 </ListItemText>
                             </ListItem>
                             <ListItem sx={{ paddingY: 0.5 }}>
@@ -815,7 +1056,7 @@ export const Home = () => {
                                     <AlertTriangle color='#2AA2CE' />
                                 </ListItemIcon>
                                 <ListItemText>
-                                    Цонхны агаар шүүгч нь борооны усаар угаагдаж цэвэрлэгдэх боломжтой.
+                                    Цонхны агаар шүүгч нь борооны усаар угаагдаж цэвэрлэгдэх боломжтой
                                 </ListItemText>
                             </ListItem>
                             <ListItem sx={{ paddingY: 0.5 }}>
@@ -823,7 +1064,7 @@ export const Home = () => {
                                     <AlertTriangle color='#2AA2CE' />
                                 </ListItemIcon>
                                 <ListItemText>
-                                    Шүүлтүүрийг угааж цэвэрлэсний дараа хатсан үөд буцаан суурилуулна.
+                                    Шүүлтүүрийг угааж цэвэрлэсний дараа хатсан үөд буцаан суурилуулна
                                 </ListItemText>
                             </ListItem>
                             <ListItem sx={{ paddingY: 0.5 }}>
@@ -831,7 +1072,7 @@ export const Home = () => {
                                     <AlertTriangle color='#2AA2CE' />
                                 </ListItemIcon>
                                 <ListItemText>
-                                    Суурилуулалт хийхдээ зай завсар гаргахгуй тэгш суурилуулна.
+                                    Суурилуулалт хийхдээ зай завсар гаргахгүй тэгш суурилуулна
                                 </ListItemText>
                             </ListItem>
                         </List>
@@ -850,7 +1091,7 @@ export const Home = () => {
                     marginTop={5}
                 >
                     <Collapse
-                        summary="Хэдэн төрлийн рам байдаг вэ?"
+                        summary="Хэдэн төрлийн цонхны хүрээ байдаг вэ?"
                         details={
                             <Box>
                                 <ul>
@@ -861,10 +1102,10 @@ export const Home = () => {
                                         Хавчаартай /цонхыг өрөмдөж цоолохгүй/.
                                     </li>
                                     <li>
-                                        Нугастай рам /гадагшаа онгойдог цонхонд суурилуулах боломжтой, шүрүүпээр өрөмдөж тогтооно/.
+                                        Нугастай цонхны хүрээ /гадагшаа онгойдог цонхонд суурилуулах боломжтой, шүрүүпээр өрөмдөж тогтооно/.
                                     </li>
                                 </ul>
-                                Рамуудыг тухайн цонхонд аль нь илүү тохиромжтойг хэрэглэгчтэй ярилцан сонгож суурилуулалт хийнэ.
+                                Цонхны хүрээнүүдийг тухайн цонхонд аль нь илүү тохиромжтойг хэрэглэгчтэй ярилцан сонгож суурилуулалт хийнэ.
                             </Box>
                         }
                     />
@@ -912,7 +1153,7 @@ export const Home = () => {
                     />
                     <Collapse
                         summary="Сервис үйлчилгээ"
-                        details="Гаднын хүчин зүйлээс хамааралтай гэмтэл гарсан тохиолдолд эвдрэлтэй рамыг засаж өгнө./Төлбөртэй/"
+                        details="Гаднын хүчин зүйлээс хамааралтай гэмтэл гарсан тохиолдолд эвдрэлтэй цонхны хүрээнүүдийг засаж өгнө./Төлбөртэй/"
                     />
                     <Collapse
                         summary="Хамтран ажиллах боломжтой эсэх?"
@@ -925,7 +1166,7 @@ export const Home = () => {
                     marginTop={12.5}
                     textTransform='uppercase'
                 >
-                    Холбоо барих
+                    Захиалга өгөх
                 </Typography>
                 <Grid
                     justifyContent='center'
@@ -939,10 +1180,8 @@ export const Home = () => {
                         item
                     >
                         <form
-                            onSubmit={e => {
-                                e.preventDefault();
-                                // contactUs();
-                            }}
+                            ref={form}
+                            onSubmit={reserve}
                         >
                             <Grid
                                 spacing={2}
@@ -953,6 +1192,7 @@ export const Home = () => {
                                     item
                                 >
                                     <TextField
+                                        name='name'
                                         value={name}
                                         onChange={e => setName(e.target.value)}
                                         label="Нэр"
@@ -965,11 +1205,61 @@ export const Home = () => {
                                     xs={6}
                                     item
                                 >
-
                                     <TextField
+                                        name='phone'
+                                        value={phone}
+                                        onChange={e => setPhone(e.target.value)}
+                                        label="Утасны дугаар"
+                                        variant="standard"
+                                        fullWidth
+                                        required
+                                    />
+                                </Grid>
+                                <Grid
+                                    xs={6}
+                                    item
+                                >
+                                    <TextField
+                                        name='email'
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
-                                        label="И-мэйл хаяг"
+                                        label="И-мэйл"
+                                        variant="standard"
+                                        fullWidth
+                                        required
+                                    />
+                                </Grid>
+                                <Grid
+                                    xs={6}
+                                    item
+                                >
+                                    <TextField
+                                        name='type'
+                                        value={type}
+                                        onChange={e => setType(e.target.value)}
+                                        label="Төрөл"
+                                        variant="standard"
+                                        fullWidth
+                                        required
+                                        select
+                                    >
+                                        <MenuItem key='personal' value='personal'>
+                                            Хувь хүн
+                                        </MenuItem>
+                                        <MenuItem key='business' value='organization'>
+                                            Байгууллага
+                                        </MenuItem>
+                                    </TextField>
+                                </Grid>
+                                <Grid
+                                    xs={12}
+                                    item
+                                >
+                                    <TextField
+                                        name='address'
+                                        value={address}
+                                        onChange={e => setAddress(e.target.value)}
+                                        label="Хаяг"
                                         variant="standard"
                                         fullWidth
                                         required
@@ -980,25 +1270,15 @@ export const Home = () => {
                                     item
                                 >
                                     <TextField
-                                        value={subject}
-                                        onChange={e => setSubject(e.target.value)}
-                                        label="Гарчиг"
-                                        variant="standard"
-                                        fullWidth
-                                    />
-                                </Grid>
-                                <Grid
-                                    xs={12}
-                                    item
-                                >
-                                    <TextField
+                                        name='message'
                                         value={message}
                                         onChange={e => setMessage(e.target.value)}
-                                        label="Дэлгэрэнгүй"
+                                        label="Дэлгэрэнгүй болон цонхны тоо"
                                         variant="standard"
                                         rows={4}
                                         multiline
                                         fullWidth
+                                        required
                                     />
                                 </Grid>
                                 <Grid

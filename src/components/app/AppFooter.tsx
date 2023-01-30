@@ -12,7 +12,7 @@ export const AppFooter = () => {
                 >
                     <Box
                         component='img'
-                        src={`${process.env.PUBLIC_URL}/images/clean-air.webp`}
+                        src={`${process.env.PUBLIC_URL}/images/logoGreen.png`}
                         width={{
                             xs: '100px',
                             sm: '150px'
@@ -79,6 +79,26 @@ export const AppFooter = () => {
                                     }}
                                 >
                                     sales@clean-air.mn
+                                </Typography>
+                            </Link>
+                            <Link
+                                href='https://www.instagram.com/cleanairmgl'
+                                target='_blank'
+                                sx={{
+                                    color: '#000',
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                <Typography
+                                    fontWeight={300}
+                                    sx={{
+                                        typography: {
+                                            xs: 'body2',
+                                            sm: 'body1'
+                                        }
+                                    }}
+                                >
+                                    instagram.com/cleanairmgl
                                 </Typography>
                             </Link>
                             <Link
