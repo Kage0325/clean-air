@@ -3,7 +3,7 @@ import { App } from './layouts';
 import { Home } from './pages';
 
 export const Router = (): JSX.Element => (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter>
         <Routes>
             <Route
                 path="/"

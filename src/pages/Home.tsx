@@ -96,7 +96,7 @@ export const Home = () => {
                         </LinearGradient>
                         <Box
                             component='img'
-                            src={`${process.env.PUBLIC_URL}/images/leaves.png`}
+                            src='/images/leaves.png'
                             height={{
                                 xs: '50px',
                                 sm: '80px',
@@ -133,7 +133,7 @@ export const Home = () => {
                     <Dialog onClose={() => setOpen(false)} open={open}>
                         <Box
                             component='video'
-                            src={`${process.env.PUBLIC_URL}/images/product_introduction.mp4`}
+                            src='/images/product_introduction.mp4'
                             height='300px'
                             width='auto'
                             autoPlay
@@ -161,7 +161,7 @@ export const Home = () => {
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
-                                image={`${process.env.PUBLIC_URL}/images/22.png`}
+                                image='/images/22.png'
                                 title='Солонгос НАНО /4 давхар/'
                             />
                             <CardContent>
@@ -380,7 +380,7 @@ export const Home = () => {
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
-                                image={`${process.env.PUBLIC_URL}/images/11.png`}
+                                image='/images/11.png'
                                 title='PVC шүүлтүүр'
                             />
                             <CardContent>
@@ -599,7 +599,7 @@ export const Home = () => {
                         <Card variant='outlined'>
                             <CardMedia
                                 sx={{ height: 220 }}
-                                image={`${process.env.PUBLIC_URL}/images/33.png`}
+                                image='/images/33.png'
                                 title='Энгийн НАНО шүүлтүүр'
                             />
                             <CardContent>
@@ -853,7 +853,7 @@ export const Home = () => {
                                 <Stack alignItems='center'>
                                     <Box
                                         component='img'
-                                        src={`${process.env.PUBLIC_URL}/images/user2.jpg`}
+                                        src='/images/user2.jpg'
                                         height='64px'
                                         width='64px'
                                         sx={{
@@ -892,7 +892,7 @@ export const Home = () => {
                                 <Stack alignItems='center'>
                                     <Box
                                         component='img'
-                                        src={`${process.env.PUBLIC_URL}/images/user1.jpg`}
+                                        src='/images/user1.jpg'
                                         height='64px'
                                         width='64px'
                                         sx={{
@@ -931,7 +931,7 @@ export const Home = () => {
                                 <Stack alignItems='center'>
                                     <Box
                                         component='img'
-                                        src={`${process.env.PUBLIC_URL}/images/user3.jpg`}
+                                        src='/images/user3.jpg'
                                         height='64px'
                                         width='64px'
                                         sx={{
@@ -989,7 +989,7 @@ export const Home = () => {
                     >
                         <Box
                             component='img'
-                            src={`${process.env.PUBLIC_URL}/images/woman_air_01.png`}
+                            src='/images/woman_air_01.png'
                             width='100%'
                             height='100%'
                             sx={{

@@ -8,7 +8,7 @@ export const AppHeader = () => {
         >
             <Box
                 component='img'
-                src={`${process.env.PUBLIC_URL}/images/logoGreen.png`}
+                src='/images/logoGreen.png'
                 width='120px'
                 height='auto'
             />
